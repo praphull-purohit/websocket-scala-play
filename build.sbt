@@ -3,9 +3,14 @@ organization := "com.praphull"
 description := "Play Scala Template"
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb)
+lazy val root = (project in file("."))
+  .enablePlugins(PlayScala, SbtWeb)
+  .settings(
+    // Required for Asset versioning
+    pipelineStages := Seq(digest, gzip)
+  )
 
-scalaVersion := "2.13.2"
+scalaVersion := "2.13.5"
 
 libraryDependencies ++= Seq(
   guice,
@@ -13,6 +18,4 @@ libraryDependencies ++= Seq(
 
 )
 
-// Required for Asset versioning
-pipelineStages in ThisBuild := Seq(digest, gzip)
 
