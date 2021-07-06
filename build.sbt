@@ -1,6 +1,6 @@
-name := """play-scala-template"""
+name := """websocket-scala-play"""
 organization := "com.praphull"
-description := "Play Scala Template"
+description := "Websockets in Scala & Play Framework"
 version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file("."))
