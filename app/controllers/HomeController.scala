@@ -61,6 +61,14 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents,
       case None => BadRequest(failure(2001, "Missing data field"))
     }
   }
+
+  def login() = Action {
+    Ok(views.html.login())
+  }
+
+  def profile() = Action {
+    Ok(views.html.profile())
+  }
 }
 
 //noinspection TypeAnnotation
