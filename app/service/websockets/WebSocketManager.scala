@@ -1,8 +1,10 @@
 package service.websockets
 
-import akka.actor.{Actor, ActorLogging, ActorRef, Props}
+import akka.actor.{Actor, ActorRef, Props}
+import org.slf4j.LoggerFactory
 
-class WebSocketManager extends Actor with ActorLogging {
+class WebSocketManager extends Actor {
+  private val log = LoggerFactory.getLogger("ws-manager")
 
   import WebSocketManager._
 
@@ -20,7 +22,7 @@ class WebSocketManager extends Actor with ActorLogging {
       log.info(s"Notifying $id with message $message")
       activeListeners.get(id) match {
         case Some(actor) => actor ! WebSocketActor.InternalMessage(message)
-        case None => log.warning(s"Ignoring message notification received for id $id, since no such WebSocket actor is registered")
+        case None => log.warn(s"Ignoring message notification received for id $id, since no such WebSocket actor is registered")
       }
   }
 }

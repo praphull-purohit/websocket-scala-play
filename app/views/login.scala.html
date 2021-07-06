@@ -1,3 +1,4 @@
+@(wsUrl: String)
 <!DOCTYPE html>
 <html>
   <head>
@@ -148,7 +149,7 @@
                       type="button"
                       style="transition: all 0.15s ease 0s;"
                       id="loginWithTruecallerButton"
-                      onclick="javascript: connect()"
+                      onclick='javascript: connect("@wsUrl")'
                     >
                       <img
                         alt="Truecaller"
